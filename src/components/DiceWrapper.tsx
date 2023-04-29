@@ -22,9 +22,17 @@ const DiceWrapper = () => {
 export default DiceWrapper;
 
 const Wrapper = styled.div`
-width:60%;
-  display:flex;
-  justify-content:space-between;
-  flex-wrap:wrap;
-    
+  width: min(100%,25rem);
+  margin: 0 auto;
+  display: grid;
+  place-items: center;
+  grid-template-columns: repeat(5,1fr);
+  gap: .8rem .5rem;
+  @media screen and (min-width: 30rem){
+    grid-template-columns: repeat(6,1fr);
+  }
+  @media screen and (min-width: 50rem){
+    width: 40rem;
+    grid-template-columns: repeat(10,1fr);
+  }
 `

@@ -1,8 +1,7 @@
-import { useEffect } from "react";
 import styled from "styled-components";
 import { useTenzies } from "../context/TenziesContext";
 const DiceFace = ({value,id}:{value:number,id:number}) => {
-  const {holdDice,diceArray} = useTenzies();
+  const {holdDice} = useTenzies();
   let dotStyle:string = '';
   if(value === 1){
     dotStyle = 'one'
@@ -17,10 +16,6 @@ const DiceFace = ({value,id}:{value:number,id:number}) => {
   }else{
     dotStyle = 'six'
   }
-  useEffect(()=>{
-    console.log(diceArray);
-    
-  },[diceArray])
   const fun = () => {
     let newValue = [];
     for (let i:number = 1; i <= value; i++){
@@ -41,10 +36,14 @@ export default DiceFace;
 
 const Wrapper = styled.div`
     .dotface{
-        background-color:blue;
-        height:5rem;
-        width:5rem;
-        margin-bottom:2rem;
+        background-color: #24292d;
+        background-color: black;
+        box-shadow: -2px -2px 4px #24292d, 2px 2px 4px #24292d;
+        height: 3rem;
+        width: 3rem;
+        padding: .3rem;
+        border-radius: 0.5rem;
+        border: none;
         display: grid;
         place-items: center;
         grid-template-areas: 
@@ -53,10 +52,10 @@ const Wrapper = styled.div`
         "f . g";
     }
     .dot{
-        height:.8rem;
-        width:.8rem;
-        background-color:red;
-        border-radius:50%;
+        height:.6rem;
+        width: .6rem;
+        background-color:#fff;
+        border-radius: 50%;
     }
     .one .dot:first-child,.three .dot:nth-child(3), .five .dot:first-child{
         grid-area: d;

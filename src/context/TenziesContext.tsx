@@ -3,7 +3,7 @@ import * as React from 'react';
 import { reducer, initialStateProps, DiceProps } from "./TenziesReducer";
 const generateDiceArray = () => {
     const diceArray:DiceProps[] = [];
-    for (let i:number = 1; i <= 6; i++){
+    for (let i:number = 1; i <= 30; i++){
         const random = Math.floor(Math.random() * 6) + 1;
         diceArray.push({id:i,value:random,isHeld:false})
     }

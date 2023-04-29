@@ -27,10 +27,11 @@ function App() {
 export default App;
 
 const Wrapper = styled.main`
+  background-color: #24292d;
   background-color: black;
   color: white;
   .main{
-    width: min(80%,50rem);
+    width: min(90%,50rem);
     margin: 0 auto;
     /* background-color: cornsilk; */
     height: 100vh;
@@ -42,7 +43,7 @@ const Wrapper = styled.main`
     /* background-color: pink; */
     height: 85%;
     text-align: center;
-    padding: 2rem;
+    padding: 2rem 1rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
