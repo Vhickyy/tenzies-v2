@@ -3,13 +3,18 @@ import { useTenzies } from "../context/TenziesContext";
 import DiceFace from "./DiceFace";
 import {useEffect} from 'react'
 const DiceWrapper = () => {
-  const {diceArray,rollDice,determineWinner,end} = useTenzies();
+  const {diceArray,rollDice,determineWinner,end,counter,counting,start} = useTenzies();
   useEffect(()=>{
-    determineWinner()
-    // console.log(diceArray);
-    // console.log(end);
-    
-  },[diceArray])
+      determineWinner();
+  },[diceArray,counter])
+  useEffect(()=>{
+    const timer = setInterval(()=>{
+      if(!end){
+        counting()
+      }
+    }, 1000)
+    return () => clearInterval(timer)
+  },[counter])
   return (
     <Wrapper>
      <div className="diceBody">
@@ -26,17 +31,11 @@ const DiceWrapper = () => {
 export default DiceWrapper;
 
 const Wrapper = styled.div`
-/* background-color: blue; */
 display: grid;
 place-items: center;
-/* align-content: space-between; */
 gap: 1rem;
-/* background-color: green; */
   .diceBody{
     width: min(100%,20rem);
-    /* margin: 0 auto; */
-    /* width: 100%; */
-    /* background-color: red; */
     margin: 0 auto;
     display: grid;
     place-items: center;
@@ -47,7 +46,6 @@ gap: 1rem;
     width: 7rem;
     background-color: #ff9f7f;
     border: none;
-    /* margin-top: 1.5rem; */
     padding: .5rem 2rem;
     font-size: 1rem;
     font-weight: 700;

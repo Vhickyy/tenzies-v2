@@ -1,16 +1,17 @@
 import styled from "styled-components";
 import { useTenzies } from "../context/TenziesContext";
+import { useEffect } from "react";
 
 const Header = () => {
-  const {start} = useTenzies()
+  const {start, counter, roll} = useTenzies();
   return (
     <Wrapper>
         <h1>Tenzies</h1>
         {start && <div className="instruction">
           <p>Roll unitl all dice are the same. Click each dice to freeze it at its current value between rolls.</p>
           <div>
-            <p>Rolls: 0</p>
-            <p>Time: 00:00</p>
+            <p>Rolls: {roll}</p>
+            <p>Time: 00:{counter < 10 ? `0${counter}` : counter}</p>
             <p>Best: 25s</p>
           </div>
         </div>}

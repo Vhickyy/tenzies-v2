@@ -31,9 +31,6 @@ function App() {
             <button onClick={checkScoreBoard}>Score Board</button>
           </div>}
           {start ? <DiceWrapper/> : checkScore ? <Scores/> : end ? <End/> : null}
-          {/* {start && <DiceWrapper/>}
-          {checkScore && <Scores/>}
-          {end && <End/>} */}
         </div>
       </div>
     </Wrapper>
