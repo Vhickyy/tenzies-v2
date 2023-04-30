@@ -3,7 +3,7 @@ import { useTenzies } from "../context/TenziesContext";
 import DiceFace from "./DiceFace";
 import {useEffect} from 'react'
 const DiceWrapper = () => {
-  const {diceArray,rollDice,determineWinner,end,counter,counting,start} = useTenzies();
+  const {diceArray,rollDice,determineWinner,end,counter,counting} = useTenzies();
   useEffect(()=>{
       determineWinner();
   },[diceArray,counter])

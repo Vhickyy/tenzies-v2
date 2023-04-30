@@ -2,7 +2,7 @@ import styled from "styled-components";
 import DiceWrapper from "./components/DiceWrapper";
 import Header from "./components/Header";
 import Scores from "./components/Scores";
-import {useState,useEffect} from 'react'
+import {useState} from 'react'
 import { useTenzies } from "./context/TenziesContext";
 import End from "./components/End";
 
@@ -16,7 +16,6 @@ function App() {
     }else
     setTheme('light')
     }
-    
   return (
     <Wrapper>
       <div className="main">

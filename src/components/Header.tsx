@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useTenzies } from "../context/TenziesContext";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 
 const Header = () => {
   const {start, counter, roll} = useTenzies();

@@ -1,6 +1,7 @@
 import {useReducer, createContext, useContext} from "react";
 import * as React from 'react';
-import { reducer, initialStateProps, DiceProps, Score } from "./TenziesReducer";
+import { reducer } from "./TenziesReducer";
+import {initialStateProps,DiceProps,Score} from '../types'
 export const generateDiceArray = () => {
     const diceArray:DiceProps[] = [];
     for (let i:number = 1; i <= 5; i++){
@@ -17,7 +18,7 @@ const initialState:initialStateProps = {
     counter: 15,
     end:false,
     roll: 0,
-    scoreArray: JSON.parse(localStorage.getItem('score')) || []
+    scoreArray: JSON.parse(`${localStorage.getItem('score')}`) || []
 }
 const initState = {
     ...initialState,
@@ -28,7 +29,8 @@ const initState = {
     determineWinner: ()=>{},
     counting: () => {},
     goHome: () => {},
-    setScore: (score: Score) => {}
+    setScore: (score: Score[]) => {},
+    clear: () => {}
 }
 const TenziesContext = createContext<typeof initState>({} as typeof initState);
 export const TenziesProvider = ({children}: {children:React.ReactNode}) => {
@@ -42,7 +44,7 @@ export const TenziesProvider = ({children}: {children:React.ReactNode}) => {
                 if(win){
                     let newScore = [...state.scoreArray,{id:1,value:state.diceArray[0].value,rolls:state.roll,time:state.counter}]
                     const sameTime = newScore.filter(dice=>dice.time === state.counter)
-                    if(sameTime.length) sameTime.sort((a,b)=>a.roll - b.roll);
+                    if(sameTime.length) sameTime.sort((a,b)=>a.rolls - b.rolls);
                     const notsameTime = newScore.filter(dice=>dice.time !== state.counter);
                     newScore = [...sameTime,...notsameTime]
                     const sett = newScore.sort((a,b)=>a.time - b.time).slice(0,5);
@@ -70,11 +72,15 @@ export const TenziesProvider = ({children}: {children:React.ReactNode}) => {
     const goHome = () => {
         dispatch({type:"HOME"})
     }
-    const setScore = (score: Score)=> {
+    const setScore = (score: Score[])=> {
         dispatch({type:"SET_SCORE",payload:score})
     }
+    const clear = () => {
+        localStorage.removeItem('score')
+        dispatch({type:"CLEAR_SCORE"})
+    }
     return(
-        <TenziesContext.Provider value={{...state,startGame,checkScoreBoard,holdDice,rollDice,determineWinner,counting,goHome,setScore}}>
+        <TenziesContext.Provider value={{...state,startGame,checkScoreBoard,holdDice,rollDice,determineWinner,counting,goHome,setScore,clear}}>
             {children}
         </TenziesContext.Provider>
     )

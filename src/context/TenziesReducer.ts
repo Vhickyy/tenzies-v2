@@ -1,35 +1,5 @@
 import {generateDiceArray} from './TenziesContext'
-export type initialStateProps = {
-    diceArray: DiceProps[],
-    start: boolean,
-    checkScore:boolean,
-    counter:number,
-    end:boolean,
-    roll:number,
-    scoreArray: Score[]
-}
-export type DiceProps = {
-    id:number,
-    isHeld:boolean,
-    value:number
-}
-type Game = {
-    type: "START_GAME" | "CHECK_SCORE" | "ROLL" | "TIMER" | "END" | "HOME"
-}
-type Hold = {
-    type: "HOLD"
-    payload: number
-}
-type setScore = { 
-    type: "SET_SCORE",
-    payload: Score
-}
-export type Score = {
-    id:number,
-    value:number,
-    time:number,
-    rolls:number
-}
+import {initialStateProps,DiceProps,Game,Hold,setScore,Score} from '../types'
 export const reducer = (state:initialStateProps,action: Game | Hold | setScore) => {
     if(action.type === "START_GAME"){
         return {...state,start:true,end:false,roll:0,counter:15,diceArray:generateDiceArray()}
@@ -60,6 +30,9 @@ export const reducer = (state:initialStateProps,action: Game | Hold | setScore) 
     }
     if(action.type === "SET_SCORE"){
         return {...state,scoreArray:action.payload}
+    }
+    if(action.type === "CLEAR_SCORE"){
+        return {...state,scoreArray:[]}
     }
     return state
 }
