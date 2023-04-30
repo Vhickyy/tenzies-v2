@@ -1,11 +1,19 @@
 import styled from "styled-components";
-import DiceWrapper from "./DiceWrapper";
+import { useTenzies } from "../context/TenziesContext";
 
 const Header = () => {
+  const {start} = useTenzies()
   return (
     <Wrapper>
         <h1>Tenzies</h1>
-        {/* <DiceWrapper/> */}
+        {start && <div className="instruction">
+          <p>Roll unitl all dice are the same. Click each dice to freeze it at its current value between rolls.</p>
+          <div>
+            <p>Rolls: 0</p>
+            <p>Time: 00:00</p>
+            <p>Best: 25s</p>
+          </div>
+        </div>}
     </Wrapper>
   )
 }
@@ -13,5 +21,22 @@ const Header = () => {
 export default Header;
 
 const Wrapper = styled.header`
-    /* color:black; */
+  display: grid;
+  gap: .5rem;
+  place-items: center;
+  width: min(100%,30rem);
+  /* background-color: pink; */
+  margin: 0 auto;
+  .instruction{
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+    text-align: center;
+    display: grid;
+    gap: 1rem;
+    
+    div{
+      display: flex;
+      justify-content: space-around;
+    }
+  }
 `

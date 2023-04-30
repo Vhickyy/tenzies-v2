@@ -2,22 +2,38 @@ import styled from "styled-components";
 import DiceWrapper from "./components/DiceWrapper";
 import Header from "./components/Header";
 import Scores from "./components/Scores";
+import {useState,useEffect} from 'react'
 import { useTenzies } from "./context/TenziesContext";
+import End from "./components/End";
+
 
 function App() {
-  const {start,checkScore,startGame,checkScoreBoard} = useTenzies()
+  const {start,checkScore,startGame,end,checkScoreBoard} = useTenzies();
+  const [theme,setTheme] = useState('light');
+  const change = () => {
+    if(theme === 'light'){
+      setTheme('dark')
+    }else
+    setTheme('light')
+    }
+    
   return (
     <Wrapper>
       <div className="main">
-        <h2>logo</h2>
+        <div className="header">
+          <h2>logo</h2>
+          <button onClick={change}>{theme === 'light' ? "light": "dark"}</button>
+        </div>
         <div className="gamebody">
           <Header/>
-          {!start && !checkScore && <div className="btnContainer">
+          {!start && !checkScore && !end && <div className="btnContainer">
             <button onClick={startGame}>Start Game</button>
             <button onClick={checkScoreBoard}>Score Board</button>
           </div>}
-          {start && <DiceWrapper/>}
+          {start ? <DiceWrapper/> : checkScore ? <Scores/> : end ? <End/> : null}
+          {/* {start && <DiceWrapper/>}
           {checkScore && <Scores/>}
+          {end && <End/>} */}
         </div>
       </div>
     </Wrapper>
@@ -27,33 +43,32 @@ function App() {
 export default App;
 
 const Wrapper = styled.main`
-  background-color: #24292d;
   background-color: black;
   color: white;
+  height: 100vh;
   .main{
-    width: min(90%,50rem);
+    width: min(95%,50rem);
     margin: 0 auto;
-    /* background-color: cornsilk; */
-    height: 100vh;
-    padding: 2rem 0;
+    padding: 1rem 0;
+  }
+  .header{
+    display: flex;
+    justify-content: space-between;
   }
   .gamebody{
     border: .25rem solid #ff9f7f;
-    margin: 2rem 0;
-    /* background-color: pink; */
-    height: 85%;
+    margin-top: 1rem;
+    min-height: 85vh;
     text-align: center;
-    padding: 2rem 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    padding: 1.5rem 1rem;
+    display: grid;
+    gap: 1rem;
   }
   .btnContainer{
     display: grid;
     place-content: center;
     row-gap: 1rem;
     height: 15rem;
-    /* background-color: blue; */
     button{
       border: none;
       width: 15rem;

@@ -3,6 +3,7 @@ export type initialStateProps = {
     start: boolean,
     checkScore:boolean,
     counter:number,
+    end:boolean
 }
 export type DiceProps = {
     id:number,
@@ -10,7 +11,7 @@ export type DiceProps = {
     value:number
 }
 type Game = {
-    type: "START_GAME" | "CHECK_SCORE" | "ROLL" | "TIMER"
+    type: "START_GAME" | "CHECK_SCORE" | "ROLL" | "TIMER" | "END" | "NOT_END"
 }
 type Hold = {
     type: "HOLD"
@@ -38,6 +39,12 @@ export const reducer = (state:initialStateProps,action: Game | Hold) => {
     }
     if(action.type === "TIMER"){
         return {...state,counter:state.counter -= 1}
+    }
+    if(action.type === "END"){
+        return {...state,end:true,start:false}
+    }
+    if(action.type === "NOT_END"){
+        return {...state,end:false}
     }
     
     return state
