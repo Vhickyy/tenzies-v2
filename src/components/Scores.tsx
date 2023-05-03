@@ -8,7 +8,23 @@ const Scores = () => {
   },[])
   return (
     <div>
-      {scoreArray?.length ? 
+      <table>
+        <thead>
+          <tr>
+            <td>Value</td>
+            <td>Number of rolls</td>
+            <td>Time taken</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2</td>
+            <td>5</td>
+            <td>7</td>
+          </tr>
+        </tbody>
+      </table>
+      {/* {scoreArray?.length ? 
       <>
       {scoreArray.map(dice=> {return(
         <div>
@@ -16,8 +32,8 @@ const Scores = () => {
           <p>{dice.rolls}</p>
           <p>{dice.time}s</p>
         </div>
-      )})}</> : <>no score</>}
-      <button onClick={clear}>clear</button>
+      )})}</> : <>no score</>} */}
+      {/* <button onClick={clear}>clear</button> */}
     </div>
   )
 }

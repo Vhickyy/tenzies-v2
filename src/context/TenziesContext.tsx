@@ -1,5 +1,4 @@
 import {useReducer, createContext, useContext} from "react";
-import * as React from 'react';
 import { reducer } from "./TenziesReducer";
 import {initialStateProps,DiceProps,Score} from '../types'
 export const generateDiceArray = () => {
@@ -25,11 +24,11 @@ const initState = {
     startGame: () => {},
     checkScoreBoard: () => {},
     rollDice: () => {},
-    holdDice: (value:number) => {},
+    holdDice: (_value:number) => {},
     determineWinner: ()=>{},
     counting: () => {},
     goHome: () => {},
-    setScore: (score: Score[]) => {},
+    setScore: (_score: Score[]) => {},
     clear: () => {}
 }
 const TenziesContext = createContext<typeof initState>({} as typeof initState);
@@ -38,15 +37,21 @@ export const TenziesProvider = ({children}: {children:React.ReactNode}) => {
     const determineWinner = () => {
         const heldDice: DiceProps | undefined= state.diceArray.find(dice=>dice.isHeld === true)
         const win = state.diceArray.every(dice=> dice.isHeld === true && dice.value === heldDice?.value);
+        const mainScore = 10;
         if(state.counter === 0 || win){
             setTimeout(()=>{
                 dispatch({type:"END"});
+                console.log(state.scoreArray);
                 if(win){
-                    let newScore = [...state.scoreArray,{id:1,value:state.diceArray[0].value,rolls:state.roll,time:state.counter}]
+                    let newScore = [...state.scoreArray,{id:1,value:state.diceArray[0].value,rolls:state.roll,time:mainScore - state.counter}]
                     const sameTime = newScore.filter(dice=>dice.time === state.counter)
-                    if(sameTime.length) sameTime.sort((a,b)=>a.rolls - b.rolls);
-                    const notsameTime = newScore.filter(dice=>dice.time !== state.counter);
-                    newScore = [...sameTime,...notsameTime]
+                    if(sameTime.length >= 2) sameTime.sort((a,b)=>a.rolls - b.rolls);
+                    console.log(sameTime);
+                    
+                    const notSameTime = newScore.filter(dice=>dice.time !== state.counter);
+                    newScore = [...sameTime,...notSameTime]
+                    console.log(newScore);
+                    
                     const sett = newScore.sort((a,b)=>a.time - b.time).slice(0,5);
                     console.log(sett);
                     localStorage.setItem('score',JSON.stringify(sett))

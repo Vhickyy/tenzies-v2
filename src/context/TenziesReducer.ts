@@ -1,8 +1,9 @@
 import {generateDiceArray} from './TenziesContext'
-import {initialStateProps,DiceProps,Game,Hold,setScore,Score} from '../types'
+import {initialStateProps,Game,Hold,setScore} from '../types'
 export const reducer = (state:initialStateProps,action: Game | Hold | setScore) => {
     if(action.type === "START_GAME"){
-        return {...state,start:true,end:false,roll:0,counter:15,diceArray:generateDiceArray()}
+        const newScore = JSON.parse(`${localStorage.getItem('score')}`) || [];
+        return {...state,start:true,end:false,roll:0,counter:15,diceArray:generateDiceArray(),scoreArray:newScore}
     }
     if(action.type === "CHECK_SCORE"){
         return {...state,checkScore:true,end:false}
