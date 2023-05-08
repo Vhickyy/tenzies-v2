@@ -29,7 +29,7 @@ function App() {
             <button onClick={startGame}>Start Game</button>
             <button onClick={checkScoreBoard}>Score Board</button>
           </div>}
-          {start ? <DiceWrapper/> : checkScore ? <Scores/> : end ? <End/> : null}
+          {start ? <DiceWrapper/> : checkScore ? <Scores /> : end ? <End/> : null}
         </div>
       </div>
     </Wrapper>
@@ -39,8 +39,11 @@ function App() {
 export default App;
 
 const Wrapper = styled.main`
-  background-color: black;
+  /* background-color: #fff; */
+  background-color: #27150f;
+  /* background-color: #fb9472; */
   color: white;
+  color: #ff9f7f;
   height: 100vh;
   .main{
     width: min(95%,50rem);
@@ -73,6 +76,9 @@ const Wrapper = styled.main`
       font-size: 1rem;
       font-weight: 700;
       background-color: #ff9f7f;
+      color: #27150f;
     }
   }
 `
+// #0e1531
+// #4c271b
