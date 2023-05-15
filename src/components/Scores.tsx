@@ -10,45 +10,38 @@ const Scores = () => {
   },[])
   return (
     <Wrapper>
-      <div>
-
+      <div className='main-grid'>
+        <div className='grid head'>
+          <p>Value</p>
+          <p>Rolls</p>
+          <p>Time Taken</p>
+        </div>
+        <div className='grid'>
+          <p>2</p>
+          <p>2</p>
+          <p>2</p>
+        </div>
+        <div className='grid'>
+          <p>2</p>
+          <p>2</p>
+          <p>2</p>
+        </div>
+        <div className='grid'>
+          <p>2</p>
+          <p>2</p>
+          <p>2</p>
+        </div>
+        <div className='grid'>
+          <p>2</p>
+          <p>2</p>
+          <p>2</p>
+        </div>
+        <div className='grid'>
+          <p>2</p>
+          <p>2</p>
+          <p>2</p>
+        </div>
       </div>
-      {/* <table> */}
-        {/* <thead>
-          <tr>
-            <td>Value</td>
-            <td>Rolls</td>
-            <td>Time taken</td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>2</td>
-            <td>5</td>
-            <td>7</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>5</td>
-            <td>7</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>5</td>
-            <td>7</td>
-          </tr> */}
-          {/* <tr>
-            <td>2</td>
-            <td>5</td>
-            <td>7</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>5</td>
-            <td>7</td>
-          </tr> */}
-        {/* </tbody>
-      </table> */}
       <div className='btn'>
         <Button>Clear</Button>
         <Button>Home</Button>
@@ -75,30 +68,25 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   height: 61vh;
-  margin-block: auto;
-  margin-top: 2rem;
+  margin-top: 1rem;
   font-size: 1.2rem;
+  .main-grid{
+    display: grid;
+    row-gap: .3rem;
+    margin-bottom: 2rem;
+  }
+  .head{
+    font-weight: 700;
+  }
+  .grid{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    /* background-color: aliceblue; */
+    padding-block: 1rem;
+  }
   .btn{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
   }
-  /* table{
-    width: 90%;
-    margin-inline: auto; */
-    /* border: .1rem solid #ff9f7f;; */
-  /* }
-  thead{
-    font-weight: 700;
-    border-bottom: 1px solid #000;
-    color: white;
-    background-color: burlywood;
-    padding: 1rem;
-  }
-  td{
-    width: 30%;
-    padding-block: 1rem;
-    border-top: 1px solid white;
-  } */
-
   
 `
