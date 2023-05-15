@@ -58,6 +58,7 @@ height: 70vh;
     font-size: 1rem;
     font-weight: 700;
     border-radius: .7rem;
+    color: #291610;
   }
   button:hover{
     border: .1rem solid #ff9f7f;
