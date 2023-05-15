@@ -68,7 +68,7 @@ const Wrapper = styled.main`
     place-content: center;
     row-gap: 1rem;
     height: 15rem;
-    background-color: green;
+    /* background-color: green; */
     button{
       border: none;
       width: 15rem;

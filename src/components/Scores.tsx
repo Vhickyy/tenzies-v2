@@ -13,7 +13,7 @@ const Scores = () => {
         <thead>
           <tr>
             <td>Value</td>
-            <td>Number of rolls</td>
+            <td>Rolls</td>
             <td>Time taken</td>
           </tr>
         </thead>
