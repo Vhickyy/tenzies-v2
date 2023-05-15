@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { useTenzies } from "../context/TenziesContext";
 import DiceFace from "./DiceFace";
-import {useEffect} from 'react'
+import {useEffect} from 'react';
+import { Button } from "../styles/ButtonStyle";
 const DiceWrapper = () => {
   const {diceArray,rollDice,determineWinner,end,counter,counting,roll} = useTenzies();
   useEffect(()=>{
@@ -30,7 +31,7 @@ const DiceWrapper = () => {
         )
       })}
     </div>
-    <button onClick={rollDice}>Roll</button>
+    <Button onClick={rollDice}>Roll</Button>
     </Wrapper>
   )
 }
@@ -41,7 +42,7 @@ display: grid;
 place-items: center;
 gap: .7rem;
 height: 70vh;
-/* background-color: #ff9f7f; */
+font-size: 1.2rem;
   .diceBody{
     width: min(100%,20rem);
     margin: 0 auto;
@@ -49,21 +50,6 @@ height: 70vh;
     place-items: center;
     grid-template-columns: repeat(5,1fr);
     gap: .6rem .5rem;
-  }
-  button{
-    width: 7rem;
-    background-color: #ff9f7f;
-    border: .1rem solid #ff9f7f;
-    padding: .5rem 2rem;
-    font-size: 1rem;
-    font-weight: 700;
-    border-radius: .7rem;
-    color: #291610;
-  }
-  button:hover{
-    border: .1rem solid #ff9f7f;
-    color: #fff;
-    background-color: black;
   }
   .flex{
     width: 100%;

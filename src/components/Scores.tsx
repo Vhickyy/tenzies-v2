@@ -1,6 +1,7 @@
 import {useTenzies} from '../context/TenziesContext';
 import {useEffect} from 'react';
 import styled from 'styled-components';
+import { Button } from '../styles/ButtonStyle';
 const Scores = () => {
   const {setScore,} = useTenzies()
   useEffect(()=>{
@@ -9,8 +10,11 @@ const Scores = () => {
   },[])
   return (
     <Wrapper>
-      <table>
-        <thead>
+      <div>
+
+      </div>
+      {/* <table> */}
+        {/* <thead>
           <tr>
             <td>Value</td>
             <td>Rolls</td>
@@ -32,7 +36,7 @@ const Scores = () => {
             <td>2</td>
             <td>5</td>
             <td>7</td>
-          </tr>
+          </tr> */}
           {/* <tr>
             <td>2</td>
             <td>5</td>
@@ -43,11 +47,11 @@ const Scores = () => {
             <td>5</td>
             <td>7</td>
           </tr> */}
-        </tbody>
-      </table>
-      <div>
-        <button>clear</button>
-        <button>home</button>
+        {/* </tbody>
+      </table> */}
+      <div className='btn'>
+        <Button>Clear</Button>
+        <Button>Home</Button>
       </div>
       
       {/* {scoreArray?.length ? 
@@ -71,17 +75,20 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   height: 61vh;
-  /* background-color: pink; */
   margin-block: auto;
   margin-top: 2rem;
-  table{
-    /* background-color: pink; */
-    width: 90%;
-    /* margin-block: 1.5rem; */
-    margin-inline: auto;
-    /* border: .1rem solid #ff9f7f;; */
+  font-size: 1.2rem;
+  .btn{
+    display: flex;
+    justify-content: space-evenly;
   }
+  /* table{
+    width: 90%;
+    margin-inline: auto; */
+    /* border: .1rem solid #ff9f7f;; */
+  /* }
   thead{
+    font-weight: 700;
     border-bottom: 1px solid #000;
     color: white;
     background-color: burlywood;
@@ -90,6 +97,8 @@ const Wrapper = styled.div`
   td{
     width: 30%;
     padding-block: 1rem;
-  }
+    border-top: 1px solid white;
+  } */
+
   
 `

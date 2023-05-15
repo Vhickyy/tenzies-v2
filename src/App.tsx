@@ -5,6 +5,7 @@ import Scores from "./components/Scores";
 import {useState} from 'react'
 import { useTenzies } from "./context/TenziesContext";
 import End from "./components/End";
+import { Button } from "./styles/ButtonStyle";
 
 
 function App() {
@@ -27,8 +28,10 @@ function App() {
             <h1>Tenzies</h1>
           </div>
           {!start && !checkScore && !end && <div className="btnContainer">
-            <button onClick={startGame}>Start Game</button>
-            <button onClick={checkScoreBoard}>Score Board</button>
+            <Button onClick={startGame}>Start Game</Button>
+            <Button onClick={checkScoreBoard}>Score Board</Button>
+            {/* <button onClick={startGame}>Start Game</button> */}
+            {/* <button onClick={checkScoreBoard}>Score Board</button> */}
           </div>}
           {start ? <DiceWrapper/> : checkScore ? <Scores /> : end ? <End/> : null}
       </div>
@@ -45,7 +48,6 @@ const Wrapper = styled.main`
   height: 100vh;
   .main{
     width: min(95%,50rem);
-    /* margin: 0 auto; */
     margin: 2rem auto;
     border: .25rem solid #ff9f7f;
     min-height: 85vh;
@@ -54,13 +56,13 @@ const Wrapper = styled.main`
     display: flex;
     flex-direction: column;
     row-gap: 1.3rem;
+    border-radius: 2rem;
   }
   .header{
     display: flex;
     justify-content: space-between;
   }
   .title{
-    /* background-color: pink; */
     height: 5vh;
   }
   .btnContainer{
@@ -68,16 +70,6 @@ const Wrapper = styled.main`
     place-content: center;
     row-gap: 1rem;
     height: 15rem;
-    /* background-color: green; */
-    button{
-      border: none;
-      width: 15rem;
-      padding: 1rem;
-      border-radius: 1rem;
-      font-size: 1rem;
-      font-weight: 700;
-      background-color: #ff9f7f;
-      color: #27150f;
-    }
+ 
   }
 `
