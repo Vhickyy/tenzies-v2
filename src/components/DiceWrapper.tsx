@@ -3,7 +3,7 @@ import { useTenzies } from "../context/TenziesContext";
 import DiceFace from "./DiceFace";
 import {useEffect} from 'react'
 const DiceWrapper = () => {
-  const {diceArray,rollDice,determineWinner,end,counter,counting} = useTenzies();
+  const {diceArray,rollDice,determineWinner,end,counter,counting,roll} = useTenzies();
   useEffect(()=>{
       determineWinner();
   },[diceArray,counter])
@@ -17,6 +17,12 @@ const DiceWrapper = () => {
   },[counter])
   return (
     <Wrapper>
+      <p>Roll unitl all dice are the same. Click each dice to freeze it at its current value between rolls.</p>
+          <div className="flex">
+            <p>Rolls: {roll}</p>
+            <p>Time: 00:{counter < 10 ? `0${counter}` : counter}</p>
+            <p>Best: 25s</p>
+          </div>
      <div className="diceBody">
         {diceArray.map(dice=>{
         return(
@@ -33,19 +39,21 @@ export default DiceWrapper;
 const Wrapper = styled.div`
 display: grid;
 place-items: center;
-gap: 1rem;
+gap: .7rem;
+height: 70vh;
+/* background-color: #ff9f7f; */
   .diceBody{
     width: min(100%,20rem);
     margin: 0 auto;
     display: grid;
     place-items: center;
     grid-template-columns: repeat(5,1fr);
-    gap: .8rem .5rem;
+    gap: .6rem .5rem;
   }
   button{
     width: 7rem;
     background-color: #ff9f7f;
-    border: none;
+    border: .1rem solid #ff9f7f;
     padding: .5rem 2rem;
     font-size: 1rem;
     font-weight: 700;
@@ -55,5 +63,10 @@ gap: 1rem;
     border: .1rem solid #ff9f7f;
     color: #fff;
     background-color: black;
+  }
+  .flex{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
   }
 `

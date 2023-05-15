@@ -6,7 +6,7 @@ const End = () => {
   
   return (
     <Wrapper>
-      <div className='main'>
+      <div className='end-ui'>
         <p>Rolls: {roll}</p>
         <div>
           {everyfun ? <p>You won!</p> : "You failed"}
@@ -29,8 +29,10 @@ const Wrapper = styled.div`
   display: grid;
   gap: .7rem;
   align-items: center;
-  .main{
+  height: 70vh;
+  .end-ui{
     width: min(80%,30rem);
+    /* height: 70vh; */
     margin-inline: auto;
     display: flex;
     justify-content: space-between;
@@ -48,5 +50,5 @@ const Wrapper = styled.div`
     font-size: 1rem;
     font-weight: 700;
     border-radius: 1rem;
-  }
+  } 
 `

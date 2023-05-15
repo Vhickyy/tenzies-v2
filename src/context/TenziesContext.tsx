@@ -3,7 +3,7 @@ import { reducer } from "./TenziesReducer";
 import {initialStateProps,DiceProps,Score} from '../types'
 export const generateDiceArray = () => {
     const diceArray:DiceProps[] = [];
-    for (let i:number = 1; i <= 5; i++){
+    for (let i:number = 1; i <= 25; i++){
         const random = Math.floor(Math.random() * 6) + 1;
         diceArray.push({id:i,value:random,isHeld:false})
     }
