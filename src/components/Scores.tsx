@@ -67,7 +67,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 61vh;
+  height: 70vh;
   margin-top: 1rem;
   font-size: 1.2rem;
   .main-grid{
