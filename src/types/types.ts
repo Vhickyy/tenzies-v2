@@ -17,7 +17,7 @@ export type Game = {
 }
 export type Hold = {
     type: "HOLD"
-    payload: number
+    payload: number | undefined
 }
 export type setScore = { 
     type: "SET_SCORE",

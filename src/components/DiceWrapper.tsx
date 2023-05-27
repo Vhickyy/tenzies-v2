@@ -36,8 +36,8 @@ const DiceWrapper = () => {
   )
 }
 export default DiceWrapper;
-
 const Wrapper = styled.div`
+
 display: grid;
 place-items: center;
 gap: .7rem;

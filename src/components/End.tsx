@@ -3,7 +3,7 @@ import {useTenzies} from '../context/TenziesContext';
 import { Button } from '../styles/ButtonStyle';
 const End = () => {
   const {roll,diceArray,counter,startGame,checkScoreBoard,goHome} = useTenzies();
-  const everyfun = diceArray.every(dice=> dice.value === diceArray[0].value);
+  const everyfun = diceArray.every(dice=> dice.value === diceArray[0].value && dice.isHeld);
   
   return (
     <Wrapper>
@@ -13,7 +13,7 @@ const End = () => {
           {everyfun ? <p>You won!</p> : <p>You failed!</p>}
           {everyfun && <div>{diceArray[0].value}</div>}
         </div>
-        <p>Time: {10 - counter}s</p>
+        <p>Time-left: {counter}s</p>
       </div>
       <div className='btn-group'>
         <Button onClick={startGame}>Play Again</Button>

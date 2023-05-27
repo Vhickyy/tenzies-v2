@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useTenzies } from "../context/TenziesContext";
-const DiceFace = ({value,id,isHeld}:{value:number,id:number,isHeld:boolean}) => {
+const DiceFace = ({value,id,isHeld}:{value:number,id?:number | undefined,isHeld?:boolean}) => {
   const {holdDice} = useTenzies();
   let dotStyle:string = '';
   if(value === 1){
@@ -25,7 +25,7 @@ const DiceFace = ({value,id,isHeld}:{value:number,id:number,isHeld:boolean}) => 
   };
   return (
     <Wrapper>
-        <div className={`dotface ${dotStyle}`} onClick={()=>holdDice(id)} style={isHeld ? {backgroundColor:"green"} : {backgroundColor:"black"}}>
+        <div className={`dotface ${dotStyle}`} onClick={()=> holdDice(id)} style={isHeld === true ? {backgroundColor:"green"} : isHeld === false ? {backgroundColor:"black"} : {backgroundColor:"black"}}>
          {fun()}
         </div>
     </Wrapper>

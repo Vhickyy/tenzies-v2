@@ -2,8 +2,9 @@ import {useTenzies} from '../context/TenziesContext';
 import {useEffect} from 'react';
 import styled from 'styled-components';
 import { Button } from '../styles/ButtonStyle';
+import DiceFace from './DiceFace';
 const Scores = () => {
-  const {setScore,} = useTenzies()
+  const {setScore,scoreArray} = useTenzies()
   useEffect(()=>{
     const newScore = JSON.parse(`${localStorage.getItem('score')}`);
     setScore(newScore)
@@ -16,47 +17,22 @@ const Scores = () => {
           <p>Rolls</p>
           <p>Time Taken</p>
         </div>
-        <div className='grid'>
-          <p>2</p>
-          <p>2</p>
-          <p>2</p>
-        </div>
-        <div className='grid'>
-          <p>2</p>
-          <p>2</p>
-          <p>2</p>
-        </div>
-        <div className='grid'>
-          <p>2</p>
-          <p>2</p>
-          <p>2</p>
-        </div>
-        <div className='grid'>
-          <p>2</p>
-          <p>2</p>
-          <p>2</p>
-        </div>
-        <div className='grid'>
-          <p>2</p>
-          <p>2</p>
-          <p>2</p>
+         {scoreArray?.length ? 
+          <>
+          {scoreArray.map((dice,index)=> {return(
+            <div key={index} className='grid'>
+              <DiceFace value={dice.value}/>
+              <p>{dice.rolls}</p>
+              <p>{dice.time}s</p>
+            </div>
+          )})}</> : <>no score</>}
+        <div className='btn'>
+          <Button>Clear</Button>
+          <Button>Home</Button> 
         </div>
       </div>
-      <div className='btn'>
-        <Button>Clear</Button>
-        <Button>Home</Button>
-      </div>
-      
-      {/* {scoreArray?.length ? 
-      <>
-      {scoreArray.map(dice=> {return(
-        <div>
-          <p>{dice.value}</p>
-          <p>{dice.rolls}</p>
-          <p>{dice.time}s</p>
-        </div>
-      )})}</> : <>no score</>} */}
-      {/* <button onClick={clear}>clear</button> */}
+      {/* <button onClick={()=>console.log("hi")
+      }>clear</button> */}
     </Wrapper>
   )
 }
@@ -71,6 +47,7 @@ const Wrapper = styled.div`
   margin-top: 1rem;
   font-size: 1.2rem;
   .main-grid{
+    height: 100%;
     display: grid;
     row-gap: .3rem;
     margin-bottom: 2rem;
@@ -81,12 +58,13 @@ const Wrapper = styled.div`
   .grid{
     display: grid;
     grid-template-columns: repeat(3,1fr);
+    place-items: center;
     /* background-color: aliceblue; */
-    padding-block: 1rem;
+    padding-block: .3rem;
   }
   .btn{
+    padding-top: .5rem;
     display: flex;
     justify-content: space-between;
-  }
-  
+  } 
 `
