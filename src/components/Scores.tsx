@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Button } from '../styles/ButtonStyle';
 import DiceFace from './DiceFace';
 const Scores = () => {
-  const {setScore,scoreArray} = useTenzies()
+  const {setScore,scoreArray,clear,goHome} = useTenzies()
   useEffect(()=>{
     const newScore = JSON.parse(`${localStorage.getItem('score')}`);
     setScore(newScore)
@@ -27,12 +27,10 @@ const Scores = () => {
             </div>
           )})}</> : <>no score</>}
         <div className='btn'>
-          <Button>Clear</Button>
-          <Button>Home</Button> 
+          <Button onClick={clear}>Clear</Button>
+          <Button onClick={goHome}>Home</Button> 
         </div>
       </div>
-      {/* <button onClick={()=>console.log("hi")
-      }>clear</button> */}
     </Wrapper>
   )
 }
