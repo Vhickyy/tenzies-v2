@@ -25,7 +25,7 @@ function App() {
     <ThemeProvider theme={theme ? lightTheme : darkTheme}>
       <Wrapper>
         <div className="header">
-            <h2>logo</h2>
+            <h2>Tenzies</h2>
             <button onClick={toggleTheme}>{theme ? "light": "dark"}</button>
           </div>
         <div className="main">
@@ -63,7 +63,7 @@ const Wrapper = styled.main`
   }
   .header{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
   }
   .title{
     height: 5vh;
